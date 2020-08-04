@@ -48,8 +48,6 @@ export const fetchSnippets = () => {
   return async (dispatch, getState) => {
     try {
       const res = await Api("snippets", { method: "GET" });
-      console.log("res from fetchSnippets", res);
-
       dispatch({ type: ALL_SNIPPETS, payload: res.data });
     } catch (e) {
       console.log(e);

@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from "react";
-// import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-// import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
 
-import Row from "react-bootstrap/Row";
+// import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
+// import Row from "react-bootstrap/Row";
+// import InputGroup from "react-bootstrap/InputGroup";
+// import FormControl from "react-bootstrap/Form";
+
+import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/Form";
 import Form from "react-bootstrap/Form";
 import "./Snippet.css";
 
-import { selectToken } from "../../store/user/selectors";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+// import { selectToken } from "../../store/user/selectors";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useHistory, Link } from "react-router-dom";
 
 export default function Snippet(props) {
   const [title, setTitle] = useState(props.snippet?.title);
   const [snippet, setSnippet] = useState(props.snippet?.snippet);
 
-  const dispatch = useDispatch();
-  const token = useSelector(selectToken);
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const token = useSelector(selectToken);
+  // const history = useHistory();
 
   //   useEffect(() => {
   //     if (token === null) {
