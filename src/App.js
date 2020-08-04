@@ -5,8 +5,10 @@ import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
+import InputForm from "./components/InputForm"
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -36,6 +38,7 @@ function App() {
     <div className="App">
       <Navigation />
       <MessageBox />
+      <InputForm />
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
