@@ -1,0 +1,8 @@
+.tag {
+  display: inline-flex;
+  padding: 2px;
+  width: auto;
+
+  margin: 5px;
+  background: green;
+}

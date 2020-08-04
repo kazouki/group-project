@@ -1,0 +1,13 @@
+.sectionTags {
+  background-color: lightblue;
+}
+
+.sectionSnippets {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.layoutContainer {
+  margin-top: 50px;
+}

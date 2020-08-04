@@ -1,0 +1,8 @@
+.snippet {
+  /* display: flex;
+  flex-direction: column; */
+  background-color: khaki;
+  margin: 10px;
+  border: 1px solid lightseagreen;
+  border-radius: 5px;
+}
