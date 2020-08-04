@@ -14,9 +14,9 @@ import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
-export default function SignUp() {
-  const [title, setTitle] = useState();
-  const [snippet, setSnippet] = useState();
+export default function Snippet(props) {
+  const [title, setTitle] = useState(props.snippet?.title);
+  const [snippet, setSnippet] = useState(props.snippet?.snippet);
 
   const dispatch = useDispatch();
   const token = useSelector(selectToken);

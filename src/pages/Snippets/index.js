@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 
 import Api from "../../Api";
-import { fetchSnippets } from "../../store/snippet/actions";
+
 import { selectAllSnippets } from "../../store/snippet/selectors";
 
 import Row from "react-bootstrap/Row";
@@ -30,22 +30,19 @@ export default function SignUp() {
   //     }
   //   }, [token, history]);
 
-  const onFetchData = async () => {
-    try {
-      dispatch(fetchSnippets());
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   return (
     <Container className="snippetsContainer">
-      <Button onClick={onFetchData}>fetch test data</Button>
-      {JSON.stringify(allSnippets)}
-      <Container className="snippetBox">
-        snippet container
-        <Snippet />
-      </Container>
+      {/* <Button onClick={onFetchData}>fetch test data</Button> */}
+      {allSnippets?.map((snippet) => (
+        <>
+          {
+            <Container className="snippetBox">
+              snippet container
+              <Snippet snippet={snippet} />
+            </Container>
+          }
+        </>
+      ))}
       <Container className="snippetBox">
         <Snippet />
       </Container>

@@ -5,15 +5,15 @@ import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
-import InputForm from "./components/InputForm"
+import InputForm from "./components/InputForm";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Layout from "./pages/Layout";
 
-
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
+import { fetchSnippets } from "./store/snippet/actions";
 import { Jumbotron } from "react-bootstrap";
 
 const Home = () => (
@@ -30,6 +30,18 @@ const Other = () => (
 function App() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
+
+  const onFetchData = async () => {
+    try {
+      dispatch(fetchSnippets());
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    onFetchData();
+  });
 
   useEffect(() => {
     dispatch(getUserWithStoredToken());
