@@ -1,13 +1,13 @@
 import Axios from "axios";
 
-export default async function api(
+export default async function Api(
   endpoint,
   { method = "GET", data, jwt } = {}
 ) {
   try {
     const res = await Axios({
       method: method,
-      url: "localhost:4000/" + endpoint,
+      url: "http://localhost:4000/" + endpoint,
       headers: {
         Authorization: `Bearer ${jwt}`,
         "Content-Type": "application/json",
