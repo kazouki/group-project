@@ -1,6 +1,6 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
-import { selectToken } from "./selectors";
+import { selectToken } from "../user/selectors";
 import {
   appLoading,
   appDoneLoading,
@@ -20,14 +20,23 @@ const newSnippetSuccess = (Post) => {
   };
 };
 
-export const newSnippet = (title, snippet) => {
+export const newSnippet = (title, snippet, tag) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
+    const token = selectToken(getState())
     try {
       const response = await axios.post(`${apiUrl}/snippets`, {
         title,
         snippet,
-      });
+        tag,
+      },
+      {
+        headers: {Authorization: `Bearer ${token}` }
+      }
+      
+      );
+
+
 
       dispatch(newSnippetSuccess(response.data));
       dispatch(showMessageWithTimeout("success", true, "Post created!"));
