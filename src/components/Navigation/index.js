@@ -1,31 +1,70 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectToken } from "../../store/user/selectors";
-import NavbarItem from "./NavbarItem";
-import LoggedIn from "./LoggedIn";
-import LoggedOut from "./LoggedOut";
+
+import { useDispatch, useSelector } from "react-redux";
+import { selectToken, selectUser } from "../../store/user/selectors";
+import { logOut } from "../../store/user/actions";
+import "./navigation.scss";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
-
-  const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand as={NavLink} to="/">
-        YOUR PROJECT NAME
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="Home" />
-          <NavbarItem path="/other" linkText="Other" />
-          {loginLogoutControls}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <>
+      <div class="navigation">
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+
+        <label for="navi-toggle" class="navigation__button">
+          <span class="navigation__icon">&nbsp;</span>
+        </label>
+
+        <div class="navigation__background">&nbsp;</div>
+
+        <nav class="navigation__nav">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a class="navigation__link" href="/">
+                Home
+              </a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="/inputform">
+                Add snippet
+              </a>
+            </li>
+
+            {!token ? (
+              <li class="navigation__item">
+                <a class="navigation__link" href="/signup">
+                  Sign up
+                </a>
+              </li>
+            ) : null}
+            {!token ? (
+              <li class="navigation__item">
+                <a class="navigation__link" href="/login">
+                  Login
+                </a>
+              </li>
+            ) : (
+              <div>
+                <li class="navigation__item">
+                  <a class="navigation__link" href="/user">
+                    {user.firstName}
+                  </a>
+                </li>
+                <button
+                  className="button-logout"
+                  onClick={() => dispatch(logOut())}
+                >
+                  Log out
+                </button>
+              </div>
+            )}
+          </ul>
+        </nav>
+      </div>
+    </>
   );
 }
