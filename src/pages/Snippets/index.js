@@ -21,7 +21,6 @@ export default function SignUp() {
         <div key={snippet.id}>
           {
             <Container className="snippetBox">
-              snippet container
               <Snippet snippet={snippet} />
             </Container>
           }
