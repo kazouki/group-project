@@ -1,4 +1,4 @@
-export const SELECTED_TAG = "SELECTED_TAGS";
+export const SELECTED_TAGS = "SELECTED_TAGS";
 
-export const setSelectedTag = (tagId) => (dispatch) =>
-  dispatch({ type: SELECTED_TAG, payload: tagId });
+export const setSelectedTags = (tagState) => (dispatch) =>
+  dispatch({ type: SELECTED_TAGS, payload: tagState });
