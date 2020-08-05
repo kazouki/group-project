@@ -25,8 +25,6 @@ export default function Snippet(props) {
   });
   const dispatch = useDispatch();
 
-  console.log("props.snippet.snippet ", props.snippet?.snippet);
-
   // const token = useSelector(selectToken);
   // const history = useHistory();
 
@@ -46,7 +44,7 @@ export default function Snippet(props) {
   };
 
   return (
-    <div>
+    <div className="snippet">
       <Button
         variant={!editMode ? "primary" : "secondary"}
         onClick={() => setEditMode(!editMode)}
@@ -55,9 +53,10 @@ export default function Snippet(props) {
       </Button>{" "}
       <h4 className="snippetTitle">{snippetState.title}</h4>
       {editMode ? (
-        <Container className="snippet">
+        <Container>
           <Form>
-            <Form.Group controlId="formBasicName">
+            <Form.Group controlId="formBasicText">
+              <Form.Label>snippet title</Form.Label>
               <Form.Control
                 value={snippetState.title}
                 onChange={(event) =>
@@ -71,11 +70,11 @@ export default function Snippet(props) {
                 required
               />
             </Form.Group>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group controlId="formBasicTextarea">
               <Form.Label>snippet code</Form.Label>
               <Form.Control
                 as="textarea"
-                rows="3"
+                rows="15"
                 value={snippetState.snippet}
                 onChange={(event) =>
                   setSnippetState({
@@ -91,7 +90,7 @@ export default function Snippet(props) {
               <Form.Text className="text-muted">blabla</Form.Text>
             </Form.Group>
             <Button variant="primary" onClick={onClickSave}>
-              Primary
+              Save
             </Button>{" "}
           </Form>
         </Container>

@@ -10,19 +10,10 @@ import { Link } from "react-router-dom";
 export default function SignUp() {
   const allSnippets = useSelector(selectAllSnippets);
   const user = useSelector(selectUser);
-  console.log("allSnippets", allSnippets);
 
   const userSnippets = allSnippets?.filter(
     (snippet) => snippet.userId === user.id
   );
-
-  console.log("user snippets ", userSnippets);
-
-  //   useEffect(() => {
-  //     if (token === null) {
-  //       history.push("/login");
-  //     }
-  //   }, [token, history]);
 
   return (
     <Container className="snippetsContainer">
