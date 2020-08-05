@@ -26,6 +26,7 @@ export default function SignUp() {
 
   return (
     <div className="tagsContainer">
+      {/* TODO  dynamically load tag component with props, for each in response array */}
       <Tag color="primary" text="Vanilla JS" />
       <Tag color="secondary" text="React" />
       <Tag color="success" text="Bootstrap" />

@@ -11,6 +11,7 @@ import Api from "../../Api";
 
 export const NEW_SNIPPET_SUCCESS = "NEW_SNIPPET_SUCCESS";
 export const ALL_SNIPPETS = "ALL_SNIPPETS";
+export const UPDATE_SNIPPETS = "UPDATE_SNIPPETS";
 
 const newSnippetSuccess = (Post) => {
   return {
@@ -52,5 +53,21 @@ export const fetchSnippets = () => {
     } catch (e) {
       console.log(e);
     }
+  };
+};
+
+export const updateSnippet = (snippetState) => {
+  return async (dispatch, getState) => {
+    try {
+      const res = await Api("snippets", {
+        method: "PUT",
+        data: { ...snippetState },
+      });
+      dispatch(fetchSnippets());
+      return res;
+    } catch (e) {
+      console.log(e);
+    }
+    return null;
   };
 };

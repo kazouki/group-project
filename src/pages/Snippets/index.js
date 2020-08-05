@@ -18,14 +18,14 @@ export default function SignUp() {
   return (
     <Container className="snippetsContainer">
       {allSnippets?.map((snippet) => (
-        <>
+        <div key={snippet.id}>
           {
             <Container className="snippetBox">
               snippet container
               <Snippet snippet={snippet} />
             </Container>
           }
-        </>
+        </div>
       ))}
       <Container className="snippetBox">
         <Snippet />
