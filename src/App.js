@@ -8,6 +8,7 @@ import MessageBox from "./components/MessageBox";
 
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Layout from "./pages/Layout";
 
 
 import { useDispatch, useSelector } from "react-redux";
@@ -42,8 +43,13 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
+
         <Route path="/other" component={Other} />
         <Route path="/signup" component={SignUp} /> 
+
+        <Route path="/layout" component={Layout} />
+        <Route path="/signup" component={SignUp} />
+
         <Route path="/login" component={Login} />
       </Switch>
     </div>
