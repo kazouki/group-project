@@ -9,13 +9,12 @@ import Button from "react-bootstrap/Button";
 import { CopyBlock, dracula } from "react-code-blocks";
 
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import "./Snippet.css";
 
 import { updateSnippet } from "../../store/snippet/actions";
 // import { selectToken } from "../../store/user/selectors";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { useHistory, Link } from "react-router-dom";
 
 export default function Snippet(props) {

@@ -13,7 +13,19 @@ import React from "react";
 import "./Tags.css";
 import Tag from "../../components/Tag";
 
-export default function SignUp() {
+// import { selectAllSnippets } from "../../store/snippet/selectors";
+import { selectUser } from "../../store/user/selectors";
+// import Snippet from "../../components/Snippet";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+export default function Tags() {
+  const user = useSelector(selectUser);
+
+  // const userSnippets = allSnippets?.filter(
+  //   (snippet) => snippet.userId === user.id
+  // );
+
   // const dispatch = useDispatch();
   // const token = useSelector(selectToken);
   // const history = useHistory();
@@ -27,13 +39,17 @@ export default function SignUp() {
   return (
     <div className="tagsContainer">
       {/* TODO  dynamically load tag component with props, for each in response array */}
-      <Tag color="primary" text="Vanilla JS" />
-      <Tag color="secondary" text="React" />
-      <Tag color="success" text="Bootstrap" />
-      <Tag color="warning" text="Express" />
-      <Tag color="danger" text="Sequelize" />
-      <Tag color="light" text="Material-UI" />
-      <Tag color="secondary" text="Something" />
+      {user.token ? (
+        <>
+          <Tag color="primary" text="Vanilla JS" />
+          <Tag color="secondary" text="React" />
+          <Tag color="success" text="Bootstrap" />
+          <Tag color="warning" text="Express" />
+          <Tag color="danger" text="Sequelize" />
+          <Tag color="light" text="Material-UI" />
+          <Tag color="secondary" text="Something" />
+        </>
+      ) : null}
     </div>
   );
 }
