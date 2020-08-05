@@ -28,11 +28,11 @@ export default function Navigation() {
                 Home
               </a>
             </li>
-            <li class="navigation__item">
+          {token?(  <li class="navigation__item">
               <a class="navigation__link" href="/inputform">
                 Add snippet
               </a>
-            </li>
+            </li>):null}
 
             {!token ? (
               <li class="navigation__item">
@@ -49,11 +49,6 @@ export default function Navigation() {
               </li>
             ) : (
               <div>
-                <li class="navigation__item">
-                  <a class="navigation__link" href="/user">
-                    {user.firstName}
-                  </a>
-                </li>
                 <button
                   className="button-logout"
                   onClick={() => dispatch(logOut())}
