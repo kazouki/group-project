@@ -11,18 +11,17 @@ export default function InputForm() {
   const [snippet, setSnippet] = useState("");
   const [tag, setTag] = useState("");
 
-  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   function submitForm(event) {
     console.log("hi");
     event.preventDefault();
 
-    dispatch(newSnippet(title, password, tag));
+    dispatch(newSnippet(title, snippet, tag));
     console.log("this is tag sent", tag)
 
     setTitle("");
-    setPassword("");
+    setSnippet("");
   }
 
   return (
@@ -44,6 +43,7 @@ export default function InputForm() {
         <Form.Group controlId="formBasicSnippet">
           <Form.Label>Snippet</Form.Label>
           <Form.Control
+            as="textarea"
             value={snippet}
             onChange={(event) => setSnippet(event.target.value)}
             type="textarea"
