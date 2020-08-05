@@ -26,9 +26,10 @@ export default function InputForm() {
   }
 
   return (
+    <div>
     <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h1 className="mt-5 mb-5">Login</h1>
+        <h1 className="mt-5 mb-5">Post Snippet</h1>
         <Form.Group controlId="formBasicTitle">
           <Form.Label>Title</Form.Label>
           <Form.Control
@@ -73,5 +74,7 @@ export default function InputForm() {
         </Form.Group>
       </Form>
     </Container>
+    
+    </div>
   );
 }
