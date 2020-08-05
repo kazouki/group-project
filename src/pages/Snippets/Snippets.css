@@ -1,6 +1,7 @@
 .snippetsContainer {
   display: flex;
   flex-direction: column;
+  /* height: fit-content; */
   /* background-color: grey; */
   /* text-align: center; */
   border-color: blue;
