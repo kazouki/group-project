@@ -15,7 +15,9 @@ import "./Snippet.css";
 import { updateSnippet } from "../../store/snippet/actions";
 // import { selectToken } from "../../store/user/selectors";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // import { useHistory, Link } from "react-router-dom";
+import { selectUser } from "../../store/user/selectors";
 
 export default function Snippet(props) {
   const [editMode, setEditMode] = useState(false);
@@ -23,6 +25,8 @@ export default function Snippet(props) {
     title: props.snippet?.title,
     snippet: props.snippet?.snippet,
   });
+  const user = useSelector(selectUser);
+
   const dispatch = useDispatch();
 
   // const token = useSelector(selectToken);
@@ -45,12 +49,12 @@ export default function Snippet(props) {
 
   return (
     <div className="snippet">
-      <Button
+      {user.token ? <Button
         variant={!editMode ? "primary" : "secondary"}
         onClick={() => setEditMode(!editMode)}
       >
         {editMode ? "Cancel" : "Edit"}
-      </Button>{" "}
+      </Button> : null}
       <h4 className="snippetTitle">{snippetState.title}</h4>
       {editMode ? (
         <Container>
