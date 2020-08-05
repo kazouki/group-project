@@ -36,6 +36,9 @@ export default function Tags() {
           ))}
         </>
       ) : null}
+      {!user.token && allTags?.tags.map((tag)=>{
+        return  <Tag key={tag.id} color="primary" text={`${tag.name}`} />
+      })}
     </div>
   );
 }

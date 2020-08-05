@@ -29,7 +29,11 @@ export default function SignUp() {
         <>
           <Link to={"/login"}>log in to load your snippets!</Link>
 
-          <Container className="snippetBox">...</Container>
+          <Container className="snippetBox">
+            {allSnippets && allSnippets.map((snippet)=>{
+             return <div key={snippet.id}>{<Snippet snippet={snippet} />}</div>
+            })}
+          </Container>
         </>
       )}
     </Container>
