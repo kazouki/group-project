@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 // import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 // import Button from "react-bootstrap/Button";
@@ -9,14 +9,14 @@ import "./Layout.css";
 import Snippets from "../Snippets";
 import Tags from "../Tags";
 
-import { selectToken } from "../../store/user/selectors";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+// import { selectToken } from "../../store/user/selectors";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useHistory, Link } from "react-router-dom";
 
 export default function SignUp() {
-  const dispatch = useDispatch();
-  const token = useSelector(selectToken);
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const token = useSelector(selectToken);
+  // const history = useHistory();
 
   //   useEffect(() => {
   //     if (token === null) {

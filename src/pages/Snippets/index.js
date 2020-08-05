@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from "react";
-// import Form from "react-bootstrap/Form";
+import React from "react";
 import Container from "react-bootstrap/Container";
-// import Button from "react-bootstrap/Button";
-
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import "./Snippets.css";
-
+import { selectAllSnippets } from "../../store/snippet/selectors";
 import Snippet from "../../components/Snippet";
-
-import { selectToken } from "../../store/user/selectors";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function SignUp() {
-  const dispatch = useDispatch();
-  const token = useSelector(selectToken);
-  const history = useHistory();
+  const allSnippets = useSelector(selectAllSnippets);
+  console.log("allSnippets", allSnippets);
 
   //   useEffect(() => {
   //     if (token === null) {
@@ -26,10 +17,16 @@ export default function SignUp() {
 
   return (
     <Container className="snippetsContainer">
-      <Container className="snippetBox">
-        snippet container
-        <Snippet />
-      </Container>
+      {allSnippets?.map((snippet) => (
+        <div key={snippet.id}>
+          {
+            <Container className="snippetBox">
+              snippet container
+              <Snippet snippet={snippet} />
+            </Container>
+          }
+        </div>
+      ))}
       <Container className="snippetBox">
         <Snippet />
       </Container>
