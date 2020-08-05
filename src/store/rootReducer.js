@@ -4,6 +4,7 @@ import user from "./user/reducer";
 import snippet from "./snippet/reducer";
 import snippettag from "./snippettag/reducer";
 import tag from "./tag/reducer";
+import layout from "./layout/reducer";
 
 export default combineReducers({
   appState,
@@ -11,4 +12,5 @@ export default combineReducers({
   snippet,
   tag,
   snippettag,
+  layout,
 });

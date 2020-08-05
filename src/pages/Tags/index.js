@@ -29,16 +29,30 @@ export default function Tags() {
 
   return (
     <div className="tagsContainer">
+      <Tag color="warning" text={"All"} tagId={0} />
       {user.token ? (
         <>
           {userTags?.map((tag) => (
-            <Tag key={tag.id} color="primary" text={`${tag.name}`} />
+            <Tag
+              key={tag.id}
+              color="primary"
+              text={`${tag.name}`}
+              tagId={tag.id}
+            />
           ))}
         </>
       ) : null}
-      {!user.token && allTags?.tags.map((tag)=>{
-        return  <Tag key={tag.id} color="primary" text={`${tag.name}`} />
-      })}
+      {!user.token &&
+        allTags?.tags.map((tag) => {
+          return (
+            <Tag
+              key={tag.id}
+              color="primary"
+              text={`${tag.name}`}
+              tagId={tag.id}
+            />
+          );
+        })}
     </div>
   );
 }
