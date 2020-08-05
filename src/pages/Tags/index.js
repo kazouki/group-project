@@ -27,6 +27,35 @@ export default function Tags() {
     relatedTagIds.includes(tag.id)
   );
 
+  function switchColor(i) {
+    switch (i) {
+      case 0:
+        return "primary";
+      case 1:
+        return "success";
+      case 2:
+        return "warning";
+      case 3:
+        return "danger";
+      case 4:
+        return "light";
+      case 5:
+        return "info";
+      default:
+        break;
+    }
+  }
+
+  // console.log(switchColor());
+
+  // <Button variant="primary">Primary</Button>{' '}
+  // <Button variant="secondary">Secondary</Button>{' '}
+  // <Button variant="success">Success</Button>{' '}
+  // <Button variant="warning">Warning</Button>{' '}
+  // <Button variant="danger">Danger</Button> <Button variant="info">Info</Button>{' '}
+  // <Button variant="light">Light</Button> <Button variant="dark">Dark</Button>{' '}
+  // <Button variant="link">Link</Button>
+
   return (
     <div className="tagsContainer">
       <Tag color="warning" text={"All"} tagId={0} />

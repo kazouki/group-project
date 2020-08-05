@@ -16,7 +16,6 @@ export default function Tag(props) {
         variant={tagActive ? props.color : "secondary"}
         onClick={() => {
           dispatch(setSelectedTags({ [props.tagId]: !tagActive }));
-          console.log(props.tagId);
         }}
       >
         {props.text}
