@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 // import InputGroup from "react-bootstrap/InputGroup";
 // import FormControl from "react-bootstrap/Form";
 
+import { CopyBlock, dracula } from "react-code-blocks";
+
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -24,6 +26,8 @@ export default function Snippet(props) {
     snippet: props.snippet?.snippet,
   });
   const dispatch = useDispatch();
+
+  console.log("props.snippet.snippet ", props.snippet?.snippet);
 
   // const token = useSelector(selectToken);
   // const history = useHistory();
@@ -44,44 +48,67 @@ export default function Snippet(props) {
   };
 
   return (
-    <Container className="snippet">
-      snippet component
-      {/* <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5"> */}
-      <Form>
-        {/* <h4 className="mt-5 mb-5">some header</h4> */}
-        <h4>some header</h4>
-        <Form.Group controlId="formBasicName">
-          <Form.Label>title</Form.Label>
-          <Form.Control
-            value={snippetState.title}
-            onChange={(event) =>
-              setSnippetState({ ...snippetState, title: event.target.value })
-            }
-            type="text"
-            placeholder="snippet title here"
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>snippet code</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows="3"
-            value={snippetState.snippet}
-            onChange={(event) =>
-              setSnippetState({ ...snippetState, snippet: event.target.value })
-            }
-            type="text"
-            placeholder="snippet here"
-            required
-          />
+    <div>
+      <Container className="snippet">
+        snippet component
+        {/* <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5"> */}
+        <Form>
+          {/* <h4 className="mt-5 mb-5">some header</h4> */}
+          <h4>some header</h4>
+          <Form.Group controlId="formBasicName">
+            <Form.Label>title</Form.Label>
+            <Form.Control
+              value={snippetState.title}
+              onChange={(event) =>
+                setSnippetState({ ...snippetState, title: event.target.value })
+              }
+              type="text"
+              placeholder="snippet title here"
+              required
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>snippet code</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows="3"
+              value={snippetState.snippet}
+              onChange={(event) =>
+                setSnippetState({
+                  ...snippetState,
+                  snippet: event.target.value,
+                })
+              }
+              type="text"
+              placeholder="snippet here"
+              required
+            />
 
-          <Form.Text className="text-muted">blabla</Form.Text>
-        </Form.Group>
-        <Button variant="primary" onClick={onClickSave}>
-          Primary
-        </Button>{" "}
-      </Form>
-    </Container>
+            {/* <CopyBlock
+            language="jsx"
+            text={`${snippetState?.snippet}`}
+            codeBlock
+            theme={dracula}
+            showLineNumbers={true}
+          /> */}
+
+            <Form.Text className="text-muted">blabla</Form.Text>
+          </Form.Group>
+          <Button variant="primary" onClick={onClickSave}>
+            Primary
+          </Button>{" "}
+        </Form>
+      </Container>
+      <div className="container mx-auto p-4">
+        <CopyBlock
+          language={"jsx"}
+          text={`${snippetState?.snippet}`}
+          showLineNumbers={true}
+          theme={dracula}
+          wrapLines={true}
+          codeBlock
+        />
+      </div>
+    </div>
   );
 }

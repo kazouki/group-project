@@ -9,6 +9,8 @@ import {
 } from "../appState/actions";
 import Api from "../../Api";
 
+import { fetchSnippetTags } from "../snippettag/actions";
+
 export const NEW_SNIPPET_SUCCESS = "NEW_SNIPPET_SUCCESS";
 export const ALL_SNIPPETS = "ALL_SNIPPETS";
 export const UPDATE_SNIPPETS = "UPDATE_SNIPPETS";
@@ -59,6 +61,7 @@ export const fetchSnippets = () => {
     try {
       const res = await Api("snippets", { method: "GET" });
       dispatch({ type: ALL_SNIPPETS, payload: res.data });
+      dispatch(fetchSnippetTags());
     } catch (e) {
       console.log(e);
     }

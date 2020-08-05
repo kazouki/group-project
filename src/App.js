@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
 
+import { Jumbotron } from "react-bootstrap";
 
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -14,8 +15,8 @@ import Layout from "./pages/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
+
 import { fetchSnippets } from "./store/snippet/actions";
-import { Jumbotron } from "react-bootstrap";
 
 const Home = () => (
   <Jumbotron>
@@ -33,11 +34,7 @@ function App() {
   const isLoading = useSelector(selectAppLoading);
 
   const onFetchData = async () => {
-    try {
-      dispatch(fetchSnippets());
-    } catch (e) {
-      console.log(e);
-    }
+    dispatch(fetchSnippets());
   };
 
   useEffect(() => {
@@ -52,13 +49,13 @@ function App() {
     <div className="App">
       <Navigation />
       <MessageBox />
-      
+
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
 
         <Route path="/other" component={Other} />
-        <Route path="/signup" component={SignUp} /> 
+        <Route path="/signup" component={SignUp} />
 
         <Route path="/layout" component={Layout} />
         <Route path="/signup" component={SignUp} />
