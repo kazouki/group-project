@@ -31,7 +31,6 @@ export default function SignUp() {
           <Tags />
         </Col>
         <Col xs={8} className="sectionSnippets">
-          snippet section column
           <Snippets />
         </Col>
       </Row>

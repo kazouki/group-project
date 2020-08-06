@@ -14,5 +14,6 @@
 .snippetBox {
   padding: 20px;
   margin: 10px;
-  background-color: lightgreen;
+  background-color: #9de0ad;
+  border-radius: 5px;
 }
