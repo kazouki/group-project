@@ -14,6 +14,7 @@ import { fetchSnippetTags } from "../snippettag/actions";
 export const NEW_SNIPPET_SUCCESS = "NEW_SNIPPET_SUCCESS";
 export const ALL_SNIPPETS = "ALL_SNIPPETS";
 export const UPDATE_SNIPPETS = "UPDATE_SNIPPETS";
+export const DELETE_SNIPPETS="DELETE_SNIPPETS"
 
 const newSnippetSuccess = (Post) => {
   return {
@@ -21,6 +22,13 @@ const newSnippetSuccess = (Post) => {
     payload: Post,
   };
 };
+
+const deleteSnippetSuccess=(snippet)=>{
+  return{
+    type:DELETE_SNIPPETS,
+    payload:snippet
+  }
+}
 
 export const newSnippet = (title, snippet, tag) => {
   return async (dispatch, getState) => {
@@ -85,5 +93,22 @@ export const updateSnippet = (snippetState) => {
       console.log(e);
     }
     return null;
+  };
+};
+
+export const deleteSnippet = (id) => {
+  return async (dispatch, getState) => {
+    const {snippetId}=id
+    
+    const token = selectToken(getState());
+    try {
+      const response = await axios.delete(`${apiUrl}/snippets/${snippetId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log("action",response.data.snippets)
+      dispatch(deleteSnippetSuccess(response.data.snippets))
+    } catch (e) {
+      console.log(e);
+    }
   };
 };
