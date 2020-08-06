@@ -62,7 +62,7 @@ export const fetchSnippets = () => {
       dispatch({ type: ALL_SNIPPETS, payload: res.data });
 
       //TODO  check connection errors
-      // if (res) dispatch(fetchSnippetTags());
+      if (res) dispatch(fetchSnippetTags());
     } catch (e) {
       console.log(e);
     }
@@ -78,7 +78,7 @@ export const updateSnippet = (snippetState) => {
       });
 
       //TODO  check connection errors
-      // if (res) dispatch(fetchSnippets());
+      if (res) dispatch(fetchSnippets());
 
       return res;
     } catch (e) {

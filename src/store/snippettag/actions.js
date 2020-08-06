@@ -11,7 +11,7 @@ export const fetchSnippetTags = () => {
       dispatch({ type: ALL_SNIPPETTAGS, payload: res.data });
 
       //TODO  check connection errors
-      // if (res) dispatch(fetchTags());
+      if (res) dispatch(fetchTags());
     } catch (e) {
       console.log(e);
     }

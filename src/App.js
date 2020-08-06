@@ -14,19 +14,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 
-import { fetchSnippets } from "./store/snippet/actions";
-
 function App() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
-
-  // const onFetchData = () => {
-  //   dispatch(fetchSnippets());
-  // };
-
-  // useEffect(() => {
-  //   onFetchData();
-  // });
 
   useEffect(() => {
     dispatch(getUserWithStoredToken());
