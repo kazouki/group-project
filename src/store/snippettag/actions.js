@@ -8,9 +8,10 @@ export const fetchSnippetTags = () => {
   return async (dispatch, getState) => {
     try {
       const res = await Api("snippets-tags", { method: "GET" });
-
       dispatch({ type: ALL_SNIPPETTAGS, payload: res.data });
-      if (res) dispatch(fetchTags());
+
+      //TODO  check connection errors
+      // if (res) dispatch(fetchTags());
     } catch (e) {
       console.log(e);
     }

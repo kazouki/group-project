@@ -60,7 +60,9 @@ export const fetchSnippets = () => {
     try {
       const res = await Api("snippets", { method: "GET" });
       dispatch({ type: ALL_SNIPPETS, payload: res.data });
-      if (res) dispatch(fetchSnippetTags());
+
+      //TODO  check connection errors
+      // if (res) dispatch(fetchSnippetTags());
     } catch (e) {
       console.log(e);
     }
@@ -74,7 +76,10 @@ export const updateSnippet = (snippetState) => {
         method: "PUT",
         data: { ...snippetState },
       });
-      if (res) dispatch(fetchSnippets());
+
+      //TODO  check connection errors
+      // if (res) dispatch(fetchSnippets());
+
       return res;
     } catch (e) {
       console.log(e);
