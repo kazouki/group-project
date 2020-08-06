@@ -30,8 +30,12 @@ export default function Layout() {
           <Tags />
         </Col>
         <Col xs={8} className="sectionSnippets">
+
           {token ? <>logged in view</> : <>logged out view</>}
           {token ? <Snippets loggedIn={true} /> : <Snippets loggedIn={false} />}
+
+      
+
         </Col>
       </Row>
     </Container>

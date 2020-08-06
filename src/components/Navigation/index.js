@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../store/user/selectors";
 import { logOut } from "../../store/user/actions";
 import "./navigation.scss";
+import { Link } from "react-router-dom";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -28,39 +29,41 @@ export default function Navigation() {
         <nav className="navigation__nav">
           <ul className="navigation__list">
             <li className="navigation__item">
-              <a className="navigation__link" href="/">
+              <Link className="navigation__link" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             {token ? (
               <li className="navigation__item">
-                <a className="navigation__link" href="/inputform">
+                <Link className="navigation__link" to="/inputform">
                   Add snippet
-                </a>
+                </Link>
               </li>
             ) : null}
 
             {!token ? (
               <li className="navigation__item">
-                <a className="navigation__link" href="/signup">
+                <Link className="navigation__link" to="/signup">
                   Sign up
-                </a>
+                </Link>
               </li>
             ) : null}
             {!token ? (
               <li className="navigation__item">
-                <a className="navigation__link" href="/login">
+                <Link className="navigation__link" to="/login">
                   Login
-                </a>
+                </Link>
               </li>
             ) : (
               <div>
-                <button
-                  className="button-logout"
-                  onClick={() => dispatch(logOut())}
-                >
-                  Log out
-                </button>
+                <Link to="/">
+                  <button
+                    className="button-logout"
+                    onClick={() => dispatch(logOut())}
+                  >
+                    Log out
+                  </button>
+                </Link>
               </div>
             )}
           </ul>
