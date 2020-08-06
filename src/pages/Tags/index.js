@@ -58,7 +58,7 @@ export default function Tags() {
 
   return (
     <div className="tagsContainer">
-      <Tag color="warning" text={"All"} tagId={0} />
+      <Tag color="warning" text={"All"} tagId={999999} />
       {user.token ? (
         <>
           {userTags?.map((tag) => (

@@ -17,11 +17,11 @@ export default function Layout() {
   const token = useSelector(selectToken);
   const history = useHistory();
 
-  useEffect(() => {
-    if (token === null) {
-      history.push("/login");
-    }
-  }, [token, history]);
+  // useEffect(() => {
+  //   if (token === null) {
+  //     history.push("/login");
+  //   }
+  // }, [token, history]);
 
   return (
     <Container className="layoutContainer">
@@ -30,8 +30,8 @@ export default function Layout() {
           <Tags />
         </Col>
         <Col xs={8} className="sectionSnippets">
-          snippet section column
-          <Snippets />
+          {token ? <>logged in view</> : <>logged out view</>}
+          {token ? <Snippets loggedIn={true} /> : <Snippets loggedIn={false} />}
         </Col>
       </Row>
     </Container>
