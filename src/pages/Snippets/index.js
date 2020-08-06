@@ -9,7 +9,6 @@ import { selectUser } from "../../store/user/selectors";
 
 import Snippet from "../../components/Snippet";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 export default function Snippets(props) {
   const user = useSelector(selectUser);
@@ -53,7 +52,6 @@ export default function Snippets(props) {
       </Container>
     );
   }
-  // end of function loggedInSnippets
 
   function LoggedOutSnippets() {
     const activeTags = selectedTags
@@ -62,7 +60,6 @@ export default function Snippets(props) {
           .map((i) => parseInt(i))
       : null;
 
-    //TODO    convert to allSnippetsWithTagIds
     const allSnippetsWithTagIds = allSnippets?.map((snippet) => {
       return {
         ...snippet,
@@ -90,7 +87,6 @@ export default function Snippets(props) {
       </Container>
     );
   }
-  // end of function loggedOutSnippets
 
   return props.loggedIn ? <LoggedInSnippets /> : <LoggedOutSnippets />;
 }
