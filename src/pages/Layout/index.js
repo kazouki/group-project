@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 
@@ -11,17 +11,18 @@ import Snippets from "../Snippets";
 import Tags from "../Tags";
 
 import { selectToken } from "../../store/user/selectors";
+import { fetchSnippets } from "../../store/snippet/actions";
+
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Layout() {
   const token = useSelector(selectToken);
-  const history = useHistory();
+  // const history = useHistory();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (token === null) {
-  //     history.push("/login");
-  //   }
-  // }, [token, history]);
+  useEffect(() => {
+    dispatch(fetchSnippets());
+  });
 
   return (
     <Container className="layoutContainer">
@@ -30,12 +31,8 @@ export default function Layout() {
           <Tags />
         </Col>
         <Col xs={8} className="sectionSnippets">
-
           {token ? <>logged in view</> : <>logged out view</>}
           {token ? <Snippets loggedIn={true} /> : <Snippets loggedIn={false} />}
-
-      
-
         </Col>
       </Row>
     </Container>
