@@ -64,7 +64,7 @@ export default function Tags() {
           {userTags?.map((tag) => (
             <Tag
               key={tag.id}
-              color="primary"
+              color="warning"
               text={`${tag.name}`}
               tagId={tag.id}
             />
@@ -76,7 +76,7 @@ export default function Tags() {
           return (
             <Tag
               key={tag.id}
-              color="primary"
+              color="warning"
               text={`${tag.name}`}
               tagId={tag.id}
             />
