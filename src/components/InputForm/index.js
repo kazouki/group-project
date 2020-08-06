@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Select from "react-select";
+import CreatableSelect from 'react-select/creatable';
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -11,11 +11,11 @@ import { selectAllTags } from "../../store/tag/selectors";
 export default function InputForm() {
   const [title, setTitle] = useState("");
   const [snippet, setSnippet] = useState("");
-  const [tag, setTag] = useState([]);
+  const [selectedTag, setSelectedTag] = useState([]);
 
   const dispatch = useDispatch();
   const tags = useSelector(selectAllTags);
-
+ 
   const option =
     tags &&
     tags.tags.map((tag) => {
@@ -23,19 +23,19 @@ export default function InputForm() {
     });
 
     const changeHandler = e => {
-      setTag({ tag: e ? e.map(x => x.value) : [] });
+      setSelectedTag( e ? e.map(x => x.value) : [] );
     };
 
   function submitForm(event) {
     console.log("hi");
     event.preventDefault();
 
-    dispatch(newSnippet(title, snippet, tag));
-    console.log("this is tag sent", tag);
+    dispatch(newSnippet(title, snippet, selectedTag));
+    console.log("this is selectedTag sent", selectedTag);
 
     setTitle("");
     setSnippet("");
-    setTag("");
+    setSelectedTag([]);
   }
 
   return (
@@ -67,7 +67,7 @@ export default function InputForm() {
 
           <Form.Group controlId="formBasicTags">
             <Form.Label>Select Tag</Form.Label>
-            <Select
+            <CreatableSelect
               isMulti
               options={option}
               name="tag"
@@ -75,7 +75,7 @@ export default function InputForm() {
               onChange={changeHandler}
               
             />
-          
+            {JSON.stringify(tags)}
           </Form.Group>
 
           <Form.Group className="mt-5">
