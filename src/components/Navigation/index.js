@@ -2,7 +2,10 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../store/user/selectors";
+
 import { logOut } from "../../store/user/actions";
+import { fetchSnippets } from "../../store/snippet/actions";
+
 import "./navigation.scss";
 import { Link } from "react-router-dom";
 
@@ -29,7 +32,11 @@ export default function Navigation() {
         <nav className="navigation__nav">
           <ul className="navigation__list">
             <li className="navigation__item">
-              <Link className="navigation__link" to="/">
+              <Link
+                className="navigation__link"
+                to="/"
+                onClick={() => dispatch(fetchSnippets())}
+              >
                 Home
               </Link>
             </li>
