@@ -1,12 +1,16 @@
 .snippet {
   /* display: flex;
   flex-direction: column; */
-  background-color: khaki;
+  background-color: #e5fdc4;
   margin: 10px;
-  border: 1px solid lightseagreen;
   border-radius: 5px;
+  padding: 20px;
 }
 
 .form-control {
   width: 100% !important;
+}
+
+.snippetTitle {
+  text-align: center;
 }

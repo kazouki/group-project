@@ -10,4 +10,5 @@
 
 .layoutContainer {
   margin-top: 50px;
+  min-width: 780px;
 }

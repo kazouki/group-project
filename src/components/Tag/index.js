@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from "react";
-import Container from "react-bootstrap/Container";
-
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import "./Tag.css";
 
-import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { setSelectedTags } from "../../store/layout/actions";
+import { selectSelectedTags } from "../../store/layout/selectors";
 
 export default function Tag(props) {
+  const selectedTags = useSelector(selectSelectedTags);
+  const tagActive = selectedTags ? selectedTags[props.tagId] : false;
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
-  const history = useHistory();
 
-  //   useEffect(() => {
-  //     if (token === null) {
-  //       history.push("/login");
-  //     }
-  //   }, [token, history]);
+  const setSelectedTagsHandler = (e) => {
+    e.preventDefault();
+    dispatch(setSelectedTags({ [props.tagId]: !tagActive }));
+  };
 
   return (
     <div className="tag">
-      <Button variant={props.color}>{props.text}</Button>{" "}
+      <Button
+        variant={tagActive ? props.color : "secondary"}
+        onClick={setSelectedTagsHandler}
+      >
+        {props.text}
+      </Button>{" "}
     </div>
   );
 }

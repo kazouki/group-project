@@ -25,20 +25,19 @@ const newSnippetSuccess = (Post) => {
 export const newSnippet = (title, snippet, tag) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
-    const token = selectToken(getState())
+    const token = selectToken(getState());
     try {
-      const response = await axios.post(`${apiUrl}/snippets`, {
-        title,
-        snippet,
-        tag,
-      },
-      {
-        headers: {Authorization: `Bearer ${token}` }
-      }
-      
+      const response = await axios.post(
+        `${apiUrl}/snippets`,
+        {
+          title,
+          snippet,
+          tag,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
-
-
 
       dispatch(newSnippetSuccess(response.data));
       dispatch(showMessageWithTimeout("success", true, "Post created!"));
@@ -61,7 +60,9 @@ export const fetchSnippets = () => {
     try {
       const res = await Api("snippets", { method: "GET" });
       dispatch({ type: ALL_SNIPPETS, payload: res.data });
-      dispatch(fetchSnippetTags());
+
+      //TODO  check connection errors
+      if (res) dispatch(fetchSnippetTags());
     } catch (e) {
       console.log(e);
     }
@@ -75,7 +76,10 @@ export const updateSnippet = (snippetState) => {
         method: "PUT",
         data: { ...snippetState },
       });
-      dispatch(fetchSnippets());
+
+      //TODO  check connection errors
+      if (res) dispatch(fetchSnippets());
+
       return res;
     } catch (e) {
       console.log(e);

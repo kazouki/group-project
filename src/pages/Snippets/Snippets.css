@@ -1,8 +1,11 @@
 .snippetsContainer {
   display: flex;
   flex-direction: column;
-  background-color: grey;
+  /* height: fit-content; */
+  /* background-color: grey; */
   /* text-align: center; */
+  border-color: blue;
+  border-radius: 7px;
   margin: 10px;
   padding: 10px;
   padding: 10px;
@@ -11,5 +14,6 @@
 .snippetBox {
   padding: 20px;
   margin: 10px;
-  background-color: lightgreen;
+  background-color: #9de0ad;
+  border-radius: 5px;
 }
