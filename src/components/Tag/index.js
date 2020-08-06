@@ -11,14 +11,16 @@ export default function Tag(props) {
   const tagActive = selectedTags ? selectedTags[props.tagId] : false;
   const dispatch = useDispatch();
 
-  const setSelectedTagsHandler = (e) => {
-    e.preventDefault();
+  function setSelectedTagsHandler(event) {
+    event.preventDefault();
     dispatch(setSelectedTags({ [props.tagId]: !tagActive }));
-  };
+    return false;
+  }
 
   return (
     <div className="tag">
       <Button
+        type="button"
         variant={tagActive ? props.color : "secondary"}
         onClick={setSelectedTagsHandler}
       >
