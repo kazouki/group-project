@@ -63,6 +63,7 @@ console.log("from tags this time all tags",allTags)
             <Tag
               key={tag.id}
               color="warning"
+              bgColor={tag.color}
               text={`${tag.name}`}
               tagId={tag.id}
             />
