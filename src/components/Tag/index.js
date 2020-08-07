@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import "./Tag.css";
 
@@ -17,15 +17,6 @@ export default function Tag(props) {
     e.preventDefault();
 
     const allTagIds = allTags ? allTags.tags.map((tag) => tag.id) : null;
-
-    // if (typeof selectedTags === typeof []) {
-    //   dispatch(setSelectedTags({ all: false }));
-
-    // }
-    // if (allTagIds) {
-    //   console.log("allTagIds", allTagIds);
-    //   allTagIds.forEach((id) => dispatch(setSelectedTags({ [id]: false })));
-    // }
 
     if (props.tagId === "all" && selectedTags && !selectedTags["all"]) {
       if (allTagIds) {

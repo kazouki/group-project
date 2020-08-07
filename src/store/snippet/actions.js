@@ -14,7 +14,7 @@ import { fetchSnippetTags } from "../snippettag/actions";
 export const NEW_SNIPPET_SUCCESS = "NEW_SNIPPET_SUCCESS";
 export const ALL_SNIPPETS = "ALL_SNIPPETS";
 export const UPDATE_SNIPPETS = "UPDATE_SNIPPETS";
-export const DELETE_SNIPPETS="DELETE_SNIPPETS"
+export const DELETE_SNIPPETS = "DELETE_SNIPPETS";
 
 const newSnippetSuccess = (Post) => {
   return {
@@ -23,12 +23,12 @@ const newSnippetSuccess = (Post) => {
   };
 };
 
-const deleteSnippetSuccess=(snippet)=>{
-  return{
-    type:DELETE_SNIPPETS,
-    payload:snippet
-  }
-}
+const deleteSnippetSuccess = (snippet) => {
+  return {
+    type: DELETE_SNIPPETS,
+    payload: snippet,
+  };
+};
 
 export const newSnippet = (title, snippet, tag) => {
   return async (dispatch, getState) => {
@@ -70,6 +70,8 @@ export const fetchSnippets = () => {
       dispatch({ type: ALL_SNIPPETS, payload: res.data });
 
       //TODO  check connection errors
+      console.log(res);
+
       if (res) dispatch(fetchSnippetTags());
     } catch (e) {
       console.log(e);
@@ -98,15 +100,15 @@ export const updateSnippet = (snippetState) => {
 
 export const deleteSnippet = (id) => {
   return async (dispatch, getState) => {
-    const {snippetId}=id
-    
+    const { snippetId } = id;
+
     const token = selectToken(getState());
     try {
       const response = await axios.delete(`${apiUrl}/snippets/${snippetId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log("action",response.data.snippets)
-      dispatch(deleteSnippetSuccess(response.data.snippets))
+      console.log("action", response.data.snippets);
+      dispatch(deleteSnippetSuccess(response.data.snippets));
     } catch (e) {
       console.log(e);
     }

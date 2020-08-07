@@ -22,7 +22,6 @@ export default function Tags() {
 
   let selectedTagsInit = {};
   const xy = allTags?.tags.forEach((tag) => (selectedTagsInit[tag.id] = true));
-  console.log("selectedTagsInit", selectedTagsInit);
 
   useEffect(() => {
     dispatch(setSelectedTags({ ...selectedTagsInit, all: true }));
@@ -39,25 +38,6 @@ export default function Tags() {
   const userTags = allTags?.tags.filter((tag) =>
     relatedTagIds.includes(tag.id)
   );
-
-  function switchColor(i) {
-    switch (i) {
-      case 0:
-        return "primary";
-      case 1:
-        return "success";
-      case 2:
-        return "warning";
-      case 3:
-        return "danger";
-      case 4:
-        return "light";
-      case 5:
-        return "info";
-      default:
-        break;
-    }
-  }
 
   return (
     <div className="tagsContainer">
