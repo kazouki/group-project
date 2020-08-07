@@ -75,7 +75,6 @@ export default function InputForm() {
               onChange={changeHandler}
               
             />
-            {JSON.stringify(tags)}
           </Form.Group>
 
           <Form.Group className="mt-5">
