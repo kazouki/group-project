@@ -12,7 +12,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import "./Snippet.css";
 
-import { updateSnippet } from "../../store/snippet/actions";
+import { updateSnippet,deleteSnippet } from "../../store/snippet/actions";
 // import { selectToken } from "../../store/user/selectors";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -45,8 +45,11 @@ export default function Snippet(props) {
   const onClickSave = (e) => {
     e.preventDefault();
     dispatch(updateSnippet({ ...snippetState, snippetId: props.snippet.id }));
+    
   };
-
+  const deleteHandler=()=>{
+    dispatch(deleteSnippet({snippetId: props.snippet.id}))
+  }
   return (
     <div className="snippet">
       {user.token ? <Button
@@ -55,6 +58,7 @@ export default function Snippet(props) {
       >
         {editMode ? "Cancel" : "Edit"}
       </Button> : null}
+      {user.token ? (<Button onClick={deleteHandler}>Delete</Button>):null}
       <h4 className="snippetTitle">{snippetState.title}</h4>
       {editMode ? (
         <Container>
