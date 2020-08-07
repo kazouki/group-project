@@ -15,6 +15,7 @@ export default function Tags() {
           <Tag
             key={tag.id}
             color="warning"
+            bgColor={tag.color}
             text={`${tag.name}`}
             tagId={tag.id}
           />

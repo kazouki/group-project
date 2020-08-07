@@ -38,7 +38,8 @@ export default function Tag(props) {
   return (
     <div className="tag">
       <Button
-        variant={tagActive ? props.color : "secondary"}
+        style={{background: tagActive ? props.bgColor : "gray"}}
+        variant={tagActive ? props.color : "gray"}
         onClick={setSelectedTagsHandler}
       >
         {props.text}
