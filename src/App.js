@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
+import LoggedIn from "./components/LoggedIn"
 
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -30,6 +31,7 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Layout} />
+        <Route path="/loggedin" component={LoggedIn}/>
         <Route path="/inputform" component={InputForm} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />

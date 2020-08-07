@@ -70,7 +70,7 @@ export const fetchSnippets = () => {
       dispatch({ type: ALL_SNIPPETS, payload: res.data });
 
       //TODO  check connection errors
-      console.log(res);
+     // console.log(res);
 
       if (res) dispatch(fetchSnippetTags());
     } catch (e) {
