@@ -15,7 +15,6 @@ export default function Tag(props) {
 
   const setSelectedTagsHandler = (e) => {
     e.preventDefault();
-
     const allTagIds = allTags ? allTags.tags.map((tag) => tag.id) : null;
 
     if (props.tagId === "all" && selectedTags && !selectedTags["all"]) {
@@ -37,7 +36,8 @@ export default function Tag(props) {
   return (
     <div className="tag">
       <Button
-        variant={tagActive ? props.color : "secondary"}
+        style={{background: tagActive ? props.bgColor : "gray"}}
+        variant={tagActive ? props.color : "gray"}
         onClick={setSelectedTagsHandler}
       >
         {props.text}
