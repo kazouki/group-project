@@ -18,9 +18,17 @@ export default function Navigation() {
 
         <div className="navbar-links">
           <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
+            {!token ? (
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+            ) : null}
+
+            {token ? (
+              <li>
+                <Link to="/loggedin">Home</Link>
+              </li>
+            ) : null}
 
             {!token ? (
               <li>

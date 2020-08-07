@@ -38,6 +38,9 @@ export default function Tags() {
   const userTags = allTags?.tags.filter((tag) =>
     relatedTagIds.includes(tag.id)
   );
+  console.log("relatedTags",relatedTagIds)
+console.log("from tags this time all tags",allTags)
+  console.log("from tags",userTags)
 
   return (
     <div className="tagsContainer">
