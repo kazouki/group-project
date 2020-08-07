@@ -10,10 +10,11 @@ import "./Layout.css";
 import Snippets from "../Snippets";
 import Tags from "../Tags";
 
-import { selectToken } from "../../store/user/selectors";
-import { fetchSnippets } from "../../store/snippet/actions";
-
 import { useDispatch, useSelector } from "react-redux";
+
+import { selectToken } from "../../store/user/selectors";
+// import { selectAllSnippets } from "../../store/snippet/selectors";
+import { fetchSnippets } from "../../store/snippet/actions";
 
 export default function Layout() {
   const token = useSelector(selectToken);
@@ -22,7 +23,8 @@ export default function Layout() {
 
   useEffect(() => {
     dispatch(fetchSnippets());
-  });
+    console.log("Layout useEffect ran!");
+  }, [dispatch, token]);
 
   return (
     <Container className="layoutContainer">

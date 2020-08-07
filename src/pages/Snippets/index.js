@@ -36,7 +36,7 @@ export default function Snippets(props) {
 
     const displaySnippets = activeTags
       ? userSnippetsWithTagIds?.filter((obj) =>
-          obj.tagIds.some((el) => activeTags.includes(el))
+          obj.tagIds?.some((el) => activeTags.includes(el))
         )
       : null;
 
@@ -71,7 +71,7 @@ export default function Snippets(props) {
 
     const displaySnippets = activeTags
       ? allSnippetsWithTagIds?.filter((obj) =>
-          obj.tagIds.some((el) => activeTags.includes(el))
+          obj.tagIds?.some((el) => activeTags.includes(el))
         )
       : null;
 

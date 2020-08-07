@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./Tags.css";
 import Tag from "../../components/Tag";
+
+import { useDispatch, useSelector } from "react-redux";
 
 import { selectUser } from "../../store/user/selectors";
 import { selectAllTags } from "../../store/tag/selectors";
 import { selectAllSnippetTags } from "../../store/snippettag/selectors";
 import { selectAllSnippets } from "../../store/snippet/selectors";
-import { useSelector } from "react-redux";
+// import { selectSelectedTags } from "../../store/layout/selectors";
+
+import { setSelectedTags } from "../../store/layout/actions";
 
 export default function Tags() {
   const user = useSelector(selectUser);
   const allTags = useSelector(selectAllTags);
   const allSnippetTags = useSelector(selectAllSnippetTags);
   const allSnippets = useSelector(selectAllSnippets);
+  const dispatch = useDispatch();
+
+  let selectedTagsInit = {};
+  const xy = allTags?.tags.forEach((tag) => (selectedTagsInit[tag.id] = true));
+  console.log("selectedTagsInit", selectedTagsInit);
+
+  useEffect(() => {
+    dispatch(setSelectedTags({ ...selectedTagsInit, all: true }));
+  }, [selectedTagsInit, dispatch]);
 
   const userSnippetIds = allSnippets
     ?.filter((snippet) => snippet.userId === user.id)
@@ -48,7 +61,7 @@ export default function Tags() {
 
   return (
     <div className="tagsContainer">
-      <Tag color="warning" text={"All"} tagId={999999} />
+      <Tag color="warning" text={"All"} tagId={"all"} />
       {user.token ? (
         <>
           {userTags?.map((tag) => (
