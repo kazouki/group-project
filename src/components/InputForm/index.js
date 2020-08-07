@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CreatableSelect from 'react-select/creatable';
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
@@ -7,8 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Col } from "react-bootstrap";
 import { newSnippet } from "../../store/snippet/actions";
 import { selectAllTags } from "../../store/tag/selectors";
+import {fetchTags} from "../../store/tag/actions"
 
 export default function InputForm() {
+
   const [title, setTitle] = useState("");
   const [snippet, setSnippet] = useState("");
   const [selectedTag, setSelectedTag] = useState([]);
@@ -16,6 +18,11 @@ export default function InputForm() {
   const dispatch = useDispatch();
   const tags = useSelector(selectAllTags);
  
+  useEffect(()=>{
+    dispatch(fetchTags())
+  },[])
+
+
   const option =
     tags &&
     tags.tags.map((tag) => {
@@ -75,7 +82,6 @@ export default function InputForm() {
               onChange={changeHandler}
               
             />
-            {JSON.stringify(tags)}
           </Form.Group>
 
           <Form.Group className="mt-5">
