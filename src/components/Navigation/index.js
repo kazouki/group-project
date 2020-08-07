@@ -13,8 +13,8 @@ export default function Navigation() {
 
   return (
     <div className="navbar-homepage">
-      <nav className="navbar">
-        <div className="title">Project Title</div>
+      <nav className="navi-bar">
+        <div className="title">CheatSheet</div>
 
         <div className="navbar-links">
           <ul>
