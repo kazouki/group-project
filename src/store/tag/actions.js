@@ -7,7 +7,6 @@ export const fetchTags = () => {
     try {
       const res = await Api("tags", { method: "GET" });
 
-      //TODO  check connection errors
       if (res) dispatch({ type: ALL_TAGS, payload: res.data });
     } catch (e) {
       console.log(e);

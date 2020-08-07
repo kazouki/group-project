@@ -9,7 +9,6 @@ import { selectUser } from "../../store/user/selectors";
 import { selectAllTags } from "../../store/tag/selectors";
 import { selectAllSnippetTags } from "../../store/snippettag/selectors";
 import { selectAllSnippets } from "../../store/snippet/selectors";
-// import { selectSelectedTags } from "../../store/layout/selectors";
 
 import { setSelectedTags } from "../../store/layout/actions";
 
@@ -38,9 +37,6 @@ export default function Tags() {
   const userTags = allTags?.tags.filter((tag) =>
     relatedTagIds.includes(tag.id)
   );
-  console.log("relatedTags",relatedTagIds)
-console.log("from tags this time all tags",allTags)
-  console.log("from tags",userTags)
 
   return (
     <div className="tagsContainer">

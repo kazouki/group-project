@@ -10,7 +10,6 @@ export const fetchSnippetTags = () => {
       const res = await Api("snippets-tags", { method: "GET" });
       dispatch({ type: ALL_SNIPPETTAGS, payload: res.data });
 
-      //TODO  check connection errors
       if (res) dispatch(fetchTags());
     } catch (e) {
       console.log(e);

@@ -69,9 +69,6 @@ export const fetchSnippets = () => {
       const res = await Api("snippets", { method: "GET" });
       dispatch({ type: ALL_SNIPPETS, payload: res.data });
 
-      //TODO  check connection errors
-     // console.log(res);
-
       if (res) dispatch(fetchSnippetTags());
     } catch (e) {
       console.log(e);
@@ -87,7 +84,6 @@ export const updateSnippet = (snippetState) => {
         data: { ...snippetState },
       });
 
-      //TODO  check connection errors
       if (res) dispatch(fetchSnippets());
 
       return res;
@@ -107,7 +103,7 @@ export const deleteSnippet = (id) => {
       const response = await axios.delete(`${apiUrl}/snippets/${snippetId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log("action", response.data.snippets);
+
       dispatch(deleteSnippetSuccess(response.data.snippets));
     } catch (e) {
       console.log(e);

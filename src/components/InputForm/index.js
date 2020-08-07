@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CreatableSelect from 'react-select/creatable';
+import CreatableSelect from "react-select/creatable";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -15,23 +15,21 @@ export default function InputForm() {
 
   const dispatch = useDispatch();
   const tags = useSelector(selectAllTags);
- 
+
   const option =
     tags &&
     tags.tags.map((tag) => {
       return { value: tag.id, label: tag.name };
     });
 
-    const changeHandler = e => {
-      setSelectedTag( e ? e.map(x => x.value) : [] );
-    };
+  const changeHandler = (e) => {
+    setSelectedTag(e ? e.map((x) => x.value) : []);
+  };
 
   function submitForm(event) {
-    console.log("hi");
     event.preventDefault();
 
     dispatch(newSnippet(title, snippet, selectedTag));
-    console.log("this is selectedTag sent", selectedTag);
 
     setTitle("");
     setSnippet("");
@@ -71,9 +69,7 @@ export default function InputForm() {
               isMulti
               options={option}
               name="tag"
-              // value={option?.filter(item => tag.includes(item.value))}
               onChange={changeHandler}
-              
             />
           </Form.Group>
 
