@@ -4,6 +4,8 @@ import { selectToken, selectUser } from "../../store/user/selectors";
 import { logOut } from "../../store/user/actions";
 import "./navigation.css";
 
+import { Link } from "react-router-dom";
+
 export default function Navigation() {
   const token = useSelector(selectToken);
   const user = useSelector(selectUser);
@@ -17,39 +19,38 @@ export default function Navigation() {
         <div className="navbar-links">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
 
             {!token ? (
               <li>
-                <a href="/signup">Sign up</a>
+                <Link to="/signup">Sign up</Link>
               </li>
             ) : null}
-            
 
             {token ? (
               <li>
-                <a href="/inputform">Add a Snippet</a>
+                <Link to="/inputform">Add Link Snippet</Link>
               </li>
             ) : null}
 
             {!token ? (
               <li>
-                <a href="/login">Log in</a>
+                <Link to="/login">Log in</Link>
               </li>
             ) : (
               <div>
                 <li>
-                  <a href="/">{user.email}</a>
+                  <Link to="/">{user.email}</Link>
                 </li>
-                <a href="/">
+                <Link to="/">
                   <button
                     className="button-logout"
                     onClick={() => dispatch(logOut())}
                   >
                     Log out
                   </button>
-                </a>
+                </Link>
               </div>
             )}
           </ul>
