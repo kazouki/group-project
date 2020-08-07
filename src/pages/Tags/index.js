@@ -21,11 +21,11 @@ export default function Tags() {
   const dispatch = useDispatch();
 
   let selectedTagsInit = {};
-  const xy = allTags?.tags.forEach((tag) => (selectedTagsInit[tag.id] = false));
+  const xy = allTags?.tags.forEach((tag) => (selectedTagsInit[tag.id] = true));
   console.log("selectedTagsInit", selectedTagsInit);
 
   useEffect(() => {
-    dispatch(setSelectedTags(selectedTagsInit));
+    dispatch(setSelectedTags({ ...selectedTagsInit, all: true }));
   }, [selectedTagsInit, dispatch]);
 
   const userSnippetIds = allSnippets
