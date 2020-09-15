@@ -7,7 +7,6 @@ import {
   showMessageWithTimeout,
   setMessage,
 } from "../appState/actions";
-import { fetchSnippets } from "../snippet/actions";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
@@ -41,10 +40,8 @@ export const signUp = (email, password) => {
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
       } else {
-        console.log(error.message);
         dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
@@ -66,10 +63,8 @@ export const login = (email, password) => {
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
       } else {
-        console.log(error.message);
         dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
