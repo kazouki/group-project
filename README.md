@@ -1,4 +1,4 @@
-##CheatSheet :scroll:
+## CheatSheet :scroll:
 
 You can check out the deployed version :point_right: [HERE](https://distracted-brattain-549bb7.netlify.app/) :point_left:!
 
